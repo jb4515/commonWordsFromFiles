@@ -23,9 +23,11 @@ import org.springframework.util.StringUtils;
 @Data
 @Component("breakWordsProcessor")
 @Slf4j
-class BreakWordsProcessor implements WordsProcessor{
+class BreakWordsProcessor implements WordsProcessor {
 
-  private @Value("${breakWordsProcessor.next.processor}") String nextProcessor;
+  private
+  @Value("${breakWordsProcessor.next.processor}")
+  String nextProcessor;
 
   @Autowired
   ApplicationContext applicationContext;

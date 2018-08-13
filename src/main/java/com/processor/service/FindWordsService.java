@@ -23,7 +23,9 @@ class FindWordsService implements IFindWordsService {
   @Autowired
   private StringTransformationService stringTransformationService;
 
-  private @Value("${default.filenames}") String defaultFileNames;
+  private
+  @Value("${default.filenames}")
+  String defaultFileNames;
 
 
   @Override public List<String> getWords(final List<String> fileNames) {
@@ -32,7 +34,7 @@ class FindWordsService implements IFindWordsService {
 
   private List<String> validateFileNames(final List<String> inputFileNames) {
     //TODO running fine with spring boot, fix for tomcat package classpath
-    if(CollectionUtils.isEmpty(inputFileNames)){
+    if (CollectionUtils.isEmpty(inputFileNames)) {
       log.debug("No input file names provided, using default files.");
       return Arrays.stream(defaultFileNames.split(",")).collect(Collectors.toList());
     }

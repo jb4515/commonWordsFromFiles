@@ -19,9 +19,11 @@ import org.springframework.util.StringUtils;
 
 @Data
 @Component("lowerCaseProcessor")
-class LowerCaseProcessor implements WordsProcessor{
+class LowerCaseProcessor implements WordsProcessor {
 
-  private @Value("${lowerCaseProcessor.next.processor}") String nextProcessor;
+  private
+  @Value("${lowerCaseProcessor.next.processor}")
+  String nextProcessor;
 
   @Autowired
   ApplicationContext applicationContext;

@@ -28,7 +28,9 @@ import org.springframework.util.StringUtils;
 @Component("fileReader")
 class FileReaderProcessor implements WordsProcessor {
 
-  private @Value("${filereader.next.processor}") String nextProcessor;
+  private
+  @Value("${filereader.next.processor}")
+  String nextProcessor;
 
   @Autowired
   ApplicationContext applicationContext;
@@ -41,19 +43,20 @@ class FileReaderProcessor implements WordsProcessor {
   }
 
   @Override public List<String> process(final String filePath) {
-    List<String> words  = new ArrayList<>();
-    if(!StringUtils.isEmpty(filePath)){
+    List<String> words = new ArrayList<>();
+    if (!StringUtils.isEmpty(filePath)) {
       Path file = Paths.get(filePath);
-      if(Files.exists(file)){
-        try(BufferedReader br = Files.newBufferedReader(file)){
+      if (Files.exists(file)) {
+        try (BufferedReader br = Files.newBufferedReader(file)) {
           List<String> lines = br.lines().collect(Collectors.toList());
           lines.forEach((String line) -> words.addAll(this.getNext().process(line)));
-        }catch (IOException e){
+        }
+        catch (IOException e) {
           //TODO logging
         }
       }
       else {
-      log.error("Unable to find file {}", file.getFileName());
+        log.error("Unable to find file {}", file.getFileName());
       }
 
     }

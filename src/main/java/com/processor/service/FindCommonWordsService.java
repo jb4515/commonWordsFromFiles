@@ -21,7 +21,7 @@ class FindCommonWordsService {
   public List<String> process(final List<List<String>> inputData) {
     List<String> commonWords = new ArrayList<>();
 
-    if(!CollectionUtils.isEmpty(inputData)) {
+    if (!CollectionUtils.isEmpty(inputData)) {
       int size = inputData.size();
 
       List<Set<String>> maps = inputData.stream().map(HashSet::new).collect(Collectors.toList());

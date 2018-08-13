@@ -27,7 +27,9 @@ public class StringTransformationService {
   @Autowired
   private ApplicationContext applicationContext;
 
-  private @Value("${transformer.first.processor}") String initialProcessorValue;
+  private
+  @Value("${transformer.first.processor}")
+  String initialProcessorValue;
 
   private WordsProcessor initialProcessor;
 
@@ -39,8 +41,8 @@ public class StringTransformationService {
   public List<String> process(final List<String> fileNames) {
     List<List<String>> filesContent = new ArrayList<>(fileNames.size());
     log.info("Transforming through different processors for files {}", fileNames.toString());
-     fileNames.parallelStream().forEach(f ->
-                                             filesContent.add(initialProcessor.process(f)));
+    fileNames.parallelStream().forEach(f ->
+                                         filesContent.add(initialProcessor.process(f)));
     log.info("Counting common words for files {}", fileNames.toString());
     return findCommonWordsService.process(filesContent);
   }

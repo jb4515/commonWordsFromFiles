@@ -20,9 +20,11 @@ import org.springframework.util.StringUtils;
 
 @Data
 @Component("removeSpecialCharactersProcessor")
-class RemoveSpecialCharactersProcessor implements WordsProcessor{
+class RemoveSpecialCharactersProcessor implements WordsProcessor {
 
-  private @Value("${removeSpecialCharactersProcessor.next.processor}") String nextProcessor;
+  private
+  @Value("${removeSpecialCharactersProcessor.next.processor}")
+  String nextProcessor;
 
   @Autowired
   ApplicationContext applicationContext;
@@ -33,6 +35,7 @@ class RemoveSpecialCharactersProcessor implements WordsProcessor{
   public void init() {
     this.next = StringUtils.isEmpty(nextProcessor) ? null : applicationContext.getBean(nextProcessor, WordsProcessor.class);
   }
+
   private Pattern pattern = Pattern.compile("[^a-z A-Z]");
 
   @Override public List<String> process(final String line) {

@@ -22,7 +22,7 @@ public class FindWordsApi extends BaseApi {
   private IFindWordsService commonWordsService;
 
   @PostMapping(value = "/commonwords")
-  public @ResponseBody List<String> getCommonWords(@RequestBody List<String> fileNames){
-        return commonWordsService.getWords(fileNames);
+  public @ResponseBody List<String> getCommonWords(@RequestBody List<String> fileNames) {
+    return commonWordsService.getWords(fileNames);
   }
 }
